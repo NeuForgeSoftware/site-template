@@ -1,0 +1,32 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE } from "../config/site";
+/**
+ * Plain-English privacy policy suited to a brochure site with a
+ * contact form. If the client adds analytics, bookings, or
+ * e-commerce, this needs expanding. Not legal advice.
+ */
+---
+<Base
+  title={`Privacy Policy | ${SITE.name}`}
+  description={`How ${SITE.name} handles personal information collected through this website.`}
+>
+  <section class="section">
+    <div class="container narrow">
+      <h1>Privacy policy</h1>
+      <p>{SITE.legalName} ("we") respects your privacy and handles personal information in line with the Australian Privacy Act 1988 and the Australian Privacy Principles.</p>
+      <h2>What we collect</h2>
+      <p>When you use the contact form or contact us directly, we collect the details you provide — typically your name, phone number, and message — so we can respond to your enquiry.</p>
+      <h2>How we use it</h2>
+      <p>We use your information only to respond to enquiries and provide our services. We do not sell or share your personal information with third parties for marketing.</p>
+      <h2>Storage</h2>
+      <p>Form submissions are delivered to us by email via a third-party form service. We keep enquiry details only as long as needed to handle your enquiry and any resulting work.</p>
+      <h2>Contact</h2>
+      <p>For privacy questions, or to ask for your details to be corrected or deleted, contact us at <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or {SITE.phone}.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .narrow { max-width: 720px; }
+</style>

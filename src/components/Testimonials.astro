@@ -1,0 +1,33 @@
+---
+import { SITE } from "../config/site";
+---
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Reviews</span>
+    <h2>What locals say</h2>
+    <div class="grid">
+      {SITE.testimonials.map((t) => (
+        <figure class="card">
+          <blockquote>“{t.quote}”</blockquote>
+          <figcaption>— {t.name}{t.suburb ? `, ${t.suburb}` : ""}</figcaption>
+        </figure>
+      ))}
+    </div>
+    {SITE.gbpReviewLink && (
+      <p class="more"><a href={SITE.gbpReviewLink}>Read more reviews on Google →</a></p>
+    )}
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  figure { margin: 0; }
+  blockquote { margin: 0 0 0.75rem; font-size: 1.05rem; }
+  figcaption { color: var(--muted); font-weight: 600; font-size: 0.9rem; }
+  .more { margin-top: 1.25rem; }
+</style>

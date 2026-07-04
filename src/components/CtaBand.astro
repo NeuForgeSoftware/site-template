@@ -1,0 +1,31 @@
+---
+import { SITE } from "../config/site";
+interface Props { heading?: string }
+const { heading = `Need a hand in ${SITE.address.town}?` } = Astro.props;
+---
+<section class="cta-band">
+  <div class="container inner">
+    <h2>{heading}</h2>
+    <a class="btn cta-btn" href={SITE.phoneHref}>Call {SITE.phone}</a>
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    background: var(--brand);
+    color: var(--brand-ink);
+    padding-block: 2.5rem;
+  }
+  .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .cta-band h2 { margin: 0; }
+  .cta-btn {
+    background: var(--accent);
+    color: var(--ink);
+  }
+</style>

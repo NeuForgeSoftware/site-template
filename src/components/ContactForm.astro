@@ -1,0 +1,37 @@
+---
+import { SITE } from "../config/site";
+---
+<form class="card contact-form" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value={SITE.web3formsKey} />
+  <input type="hidden" name="subject" value={`New enquiry from ${SITE.name} website`} />
+  <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" />
+
+  <label>
+    Name
+    <input type="text" name="name" required autocomplete="name" />
+  </label>
+  <label>
+    Phone
+    <input type="tel" name="phone" required autocomplete="tel" />
+  </label>
+  <label>
+    What do you need help with?
+    <textarea name="message" rows="4" required></textarea>
+  </label>
+  <button class="btn btn--primary" type="submit">Send enquiry</button>
+  <p class="note">Or just call — <a href={SITE.phoneHref}>{SITE.phone}</a></p>
+</form>
+
+<style>
+  .contact-form { display: grid; gap: 1rem; max-width: 560px; }
+  label { display: grid; gap: 0.35rem; font-weight: 600; font-size: 0.95rem; }
+  input, textarea {
+    font: inherit;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid color-mix(in srgb, var(--ink) 25%, transparent);
+    border-radius: var(--radius);
+    background: var(--bg);
+  }
+  .hidden { display: none; }
+  .note { margin: 0; color: var(--muted); font-size: 0.9rem; }
+</style>

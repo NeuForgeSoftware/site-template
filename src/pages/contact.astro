@@ -1,0 +1,57 @@
+---
+import Base from "../layouts/Base.astro";
+import ContactForm from "../components/ContactForm.astro";
+import { SITE } from "../config/site";
+---
+<Base
+  title={`Contact | ${SITE.name} ${SITE.address.town}`}
+  description={`Contact ${SITE.name} in ${SITE.address.town} — call ${SITE.phone}, email, or send an enquiry. ${SITE.hours[0].day}: ${SITE.hours[0].hours}.`}
+>
+  <section class="section">
+    <div class="container grid">
+      <div>
+        <h1>Get in touch</h1>
+        <p class="big"><a href={SITE.phoneHref}>{SITE.phone}</a></p>
+        <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <p>{SITE.address.street}, {SITE.address.town} {SITE.address.region} {SITE.address.postcode}</p>
+        <h2>Hours</h2>
+        <table>
+          <tbody>
+            {SITE.hours.map((h) => (
+              <tr><th scope="row">{h.day}</th><td>{h.hours}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <ContactForm />
+      </div>
+    </div>
+    {SITE.mapEmbedSrc && (
+      <div class="container map">
+        <iframe
+          src={SITE.mapEmbedSrc}
+          title={`Map showing ${SITE.name} in ${SITE.address.town}`}
+          width="100%" height="360" style="border:0; border-radius: var(--radius);"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    )}
+  </section>
+</Base>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 3rem;
+  }
+  .big { font-size: 1.5rem; font-weight: 800; }
+  table { border-collapse: collapse; }
+  th, td { text-align: left; padding: 0.3rem 1.25rem 0.3rem 0; }
+  th { color: var(--muted); font-weight: 600; }
+  .map { margin-top: 2.5rem; }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>

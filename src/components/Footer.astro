@@ -1,0 +1,55 @@
+---
+import { SITE } from "../config/site";
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container grid">
+    <div>
+      <p class="brand">{SITE.name}</p>
+      <p>{SITE.address.street}, {SITE.address.town} {SITE.address.region} {SITE.address.postcode}</p>
+      <p><a href={SITE.phoneHref}>{SITE.phone}</a> · <a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+    </div>
+    <div>
+      <p class="brand">Hours</p>
+      {SITE.hours.map((h) => <p>{h.day}: {h.hours}</p>)}
+    </div>
+    <div>
+      <p class="brand">Servicing</p>
+      <p>{SITE.serviceArea.join(" · ")}</p>
+      {SITE.socials.facebook && <p><a href={SITE.socials.facebook}>Facebook</a></p>}
+    </div>
+  </div>
+  <div class="container legal">
+    <p>© {year} {SITE.legalName} · <a href="/privacy/">Privacy</a></p>
+    <p class="credit">Website by <a href="https://www.neuforge.io" rel="noopener">NeuForge Labs</a></p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink);
+    color: color-mix(in srgb, var(--bg) 85%, transparent);
+    padding-block: 3rem 1.5rem;
+    margin-top: 3rem;
+    font-size: 0.95rem;
+  }
+  .site-footer a { color: inherit; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+  .brand { font-weight: 700; color: var(--bg); margin-bottom: 0.5rem; }
+  p { margin: 0 0 0.35em; }
+  .legal {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid color-mix(in srgb, var(--bg) 20%, transparent);
+    font-size: 0.85rem;
+    opacity: 0.85;
+  }
+</style>

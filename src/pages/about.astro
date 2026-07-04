@@ -1,0 +1,30 @@
+---
+import Base from "../layouts/Base.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { SITE } from "../config/site";
+/**
+ * CONTENT TIP: this page's job is trust. Real names, real faces,
+ * years in the area, licences, and why they do it. Replace the
+ * placeholder copy below with the client's actual story — keep
+ * it in their voice, first person plural, no marketing fluff.
+ */
+---
+<Base
+  title={`About | ${SITE.name} ${SITE.address.town}`}
+  description={`Meet the team behind ${SITE.name} — local, licensed and based in ${SITE.address.town}, ${SITE.address.region}.`}
+>
+  <section class="section">
+    <div class="container narrow">
+      <span class="eyebrow">About us</span>
+      <h1>Local, licensed, and here to stay</h1>
+      <img src="/team.jpg" alt={`The ${SITE.name} team`} width="880" height="500" style="border-radius: var(--radius); margin-block: 1.5rem;" />
+      <p>[Client's story goes here — how long they've been in {SITE.address.town}, who they are, what they care about. Two or three honest paragraphs beat a page of marketing copy.]</p>
+      <p>[Licences, insurance, memberships — the trust signals for their industry.]</p>
+    </div>
+  </section>
+  <CtaBand />
+</Base>
+
+<style>
+  .narrow { max-width: 760px; }
+</style>

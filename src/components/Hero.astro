@@ -1,0 +1,47 @@
+---
+import { SITE } from "../config/site";
+/**
+ * The hero's job: within 3 seconds a visitor knows WHO this is,
+ * WHERE they operate, and the answer to the question they came with.
+ */
+---
+<section class="hero">
+  <div class="container inner">
+    <div class="copy">
+      <span class="eyebrow">{SITE.address.town} & {SITE.serviceArea.at(-1)}</span>
+      <h1>{SITE.tagline}</h1>
+      <p class="answer">{SITE.heroAnswer}</p>
+      <div class="actions">
+        <a class="btn btn--primary" href={SITE.phoneHref}>Call {SITE.phone}</a>
+        <a class="btn btn--ghost" href="/contact/">Get a free quote</a>
+      </div>
+    </div>
+    <div class="media">
+      <!-- Replace /public/hero.jpg with a REAL photo of the client's work/premises -->
+      <img src="/hero.jpg" alt={`${SITE.name} at work in ${SITE.address.town}`} width="560" height="420" loading="eager" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { padding-block: clamp(3rem, 8vw, 6rem); }
+  .inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .answer {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--brand);
+    border-left: 4px solid var(--accent);
+    padding-left: 0.9rem;
+    margin-block: 1.25rem;
+  }
+  .actions { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+  .media img { border-radius: var(--radius); object-fit: cover; width: 100%; }
+  @media (max-width: 800px) {
+    .inner { grid-template-columns: 1fr; }
+  }
+</style>

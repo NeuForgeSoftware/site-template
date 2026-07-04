@@ -1,0 +1,29 @@
+---
+import { SITE } from "../config/site";
+interface Props { heading?: string }
+const { heading = "What we do" } = Astro.props;
+---
+<section class="section section--tint" id="services">
+  <div class="container">
+    <span class="eyebrow">Services</span>
+    <h2>{heading}</h2>
+    <div class="grid">
+      {SITE.services.map((s) => (
+        <div class="card">
+          <h3>{s.title}</h3>
+          <p>{s.blurb}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  .card p { margin-bottom: 0; color: var(--muted); }
+</style>

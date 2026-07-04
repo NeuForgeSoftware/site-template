@@ -1,0 +1,33 @@
+---
+import { SITE } from "../config/site";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: SITE.faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+<section class="section section--tint">
+  <div class="container narrow">
+    <span class="eyebrow">Common questions</span>
+    <h2>Good to know</h2>
+    {SITE.faqs.map((f) => (
+      <details class="card">
+        <summary>{f.q}</summary>
+        <p>{f.a}</p>
+      </details>
+    ))}
+  </div>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</section>
+
+<style>
+  .narrow { max-width: 760px; }
+  details { margin-top: 0.9rem; }
+  summary { font-weight: 700; cursor: pointer; }
+  details p { margin: 0.75rem 0 0; color: var(--muted); }
+</style>

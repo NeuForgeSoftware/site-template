@@ -1,0 +1,24 @@
+---
+import Base from "../layouts/Base.astro";
+import ServicesGrid from "../components/ServicesGrid.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { SITE } from "../config/site";
+/**
+ * SEO TIP: if a service is a big search term on its own
+ * ("hot water systems kyneton"), give it its own page:
+ * src/pages/services/hot-water-systems.astro with ~300 words.
+ */
+---
+<Base
+  title={`Services | ${SITE.name} ${SITE.address.town}`}
+  description={`Full list of services from ${SITE.name}, servicing ${SITE.serviceArea.join(", ")}. Free quotes — call ${SITE.phone}.`}
+>
+  <section class="section">
+    <div class="container">
+      <h1>Our services</h1>
+      <p>Everything we do across {SITE.serviceArea.join(", ")}. Not sure what you need? <a href={SITE.phoneHref}>Give us a call</a> and we'll point you in the right direction.</p>
+    </div>
+  </section>
+  <ServicesGrid heading="Services" />
+  <CtaBand heading="Want a fixed, free quote?" />
+</Base>
